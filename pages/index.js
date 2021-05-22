@@ -11,6 +11,7 @@ export default function HomePage() {
       <Link href='/about'>About</Link>
 
 
+
     </Layout>
   )
 }
