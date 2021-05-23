@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import EventItem from '@/components/EventItem'
+import eventData from 'public/data.json'
 import { API_URL } from '@/config/index'
 
 
 export default function HomePage({events}) {
-  console.log(events.length);
+  console.log(events.length)
   return (
     <Layout>
 
@@ -29,15 +30,11 @@ export default function HomePage({events}) {
 }
 
 export async function getStaticProps(){
-  const res = await fetch(`${API_URL}/api/events`)
+  // const res = await fetch(`${API_URL}/api/events`)
+  const events = eventData.events;
 
-  // console.log(res)
-  // const events = await res.response.json()
-
-
-  const events = [{id: 1, name: "Hardcoded Name of Event", time: "3:00", date: "April 20th, 2020", data: "data"}]
   return {
-    props: {events},
+    props: {events: events.splice(0, 4)},
     revalidate: 1
   }
 
