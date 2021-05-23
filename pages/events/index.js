@@ -5,7 +5,6 @@ import eventData from 'public/data.json'
 import { API_URL } from '@/config/index'
 
 export default function EventsPage({ events }) {
-  // console.log(events.length)
   return (
     <Layout>
       <h1>Upcoming Events</h1>

@@ -6,7 +6,6 @@ import { API_URL } from '@/config/index'
 
 
 export default function HomePage({events}) {
-  console.log(events.length)
   return (
     <Layout>
 
