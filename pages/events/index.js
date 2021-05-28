@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import EventItem from '@/components/EventItem'
-import eventData from 'public/data.json'
 import { API_URL } from '@/config/index'
 
 export default function EventsPage({ events }) {
@@ -9,7 +8,7 @@ export default function EventsPage({ events }) {
     <Layout>
       <h1>Upcoming Events</h1>
       {events.length === 0 && <h3>No events to show</h3>}
-
+    {console.log(events)}
       {events.map((evt) => (
         <EventItem key={evt.id} evt={evt} />
       ))}
@@ -19,8 +18,8 @@ export default function EventsPage({ events }) {
 }
 
 export async function getStaticProps() {
-  // const res = await fetch(`${API_URL}/api/events`)
-  const events = eventData.events;
+  const res = await fetch(`${API_URL}/api/events`)
+  const events = await res.json();
 
   return {
     props: {events},

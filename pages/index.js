@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Layout from '@/components/Layout'
 import EventItem from '@/components/EventItem'
-import eventData from 'public/data.json'
 import { API_URL } from '@/config/index'
 
 
@@ -29,11 +28,11 @@ export default function HomePage({events}) {
 }
 
 export async function getStaticProps(){
-  // const res = await fetch(`${API_URL}/api/events`)
-  const events = eventData.events;
-
+  const res = await fetch(`${API_URL}/api/events`);
+  const allData = await res.json();
+  const events = allData.splice(3, 6);
   return {
-    props: {events: events.splice(0, 4)},
+    props: {events},
     revalidate: 1
   }
 
